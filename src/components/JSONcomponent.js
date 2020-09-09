@@ -12,16 +12,7 @@ const JSONcomponent = props => {
                 <span>{"{"}</span>
             </div>
             <div className={'JSONChildren'}>
-                {isFolded
-                    ? Array.isArray(props.JSON[key])
-                        ?
-                        <div className={'JSON'} key={key}>
-                            <span>{key}: </span> <ArrayComponent it={0} JSON={props.JSON[key]} />
-                        </div>
-                        : json_verify(props.JSON[key])
-                        ? <ul key={0}><span>"{key}"</span>: <JSONcomponent JSON={props.JSON[key]} /><span>{" ..."}</span></ul>
-                        : <li key={0}><span>"{key}"</span>: {props.JSON[key].toString()}<span>{" ..."}</span></li>
-                    : Object.keys(props.JSON).map((it, key) => (
+                {(isFolded ? Object.keys(props.JSON).slice(0, 1) : Object.keys(props.JSON)).map((it, key) => (
                     Array.isArray(props.JSON[it])
                         ?
                         <div className={'JSON'} key={key}>
