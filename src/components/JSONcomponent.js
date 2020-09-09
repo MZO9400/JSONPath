@@ -3,9 +3,13 @@ import './styles.css'
 import ArrayComponent from "./ArrayComponent";
 const json_verify = function(s){ try { return typeof s == 'object' } catch (e) { return false; }};
 const JSONcomponent = props => {
+    const [isFolded, toggleFold] = React.useState(false);
     return (
         <div className={'JSON'}>
-            <span>{"{"}</span>
+            <div>
+                <span className={'parentContainer unselectable'} onClick={() => toggleFold(!isFolded)}>{isFolded ? "+" : "-"}</span>
+                <span>{"{"}</span>
+            </div>
             <div className={'JSONChildren'}>
                 {Object.keys(props.JSON).map((it, key) => (
                     Array.isArray(props.JSON[it])

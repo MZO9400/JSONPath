@@ -9,3 +9,18 @@ ul, li {
     list-style-type: none;
     margin: 0
 }
+
+.parentContainer {
+    font-family: monospace;
+    cursor: pointer;
+    padding: 0 3px;
+    margin-right: 5px;
+    border: solid 1px black;
+}
+.unselectable {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
