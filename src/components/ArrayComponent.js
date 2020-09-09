@@ -12,7 +12,12 @@ export default props => {
                       onClick={() => toggleFold(!isFolded)}>{isFolded ? "+" : "-"}</span>
                 <span>{"["}</span>
             </div>
-            {props.JSON.map((subarray, subkey) => (
+            {isFolded
+                ?
+                json_verify(props.JSON[0])
+                    ? <JSONcomponent key={props.JSON[0]} JSON={props.JSON[0]}/>
+                    : <li className={'JSONChildren'} key={props.JSON[0]}>{props.JSON[0]}<span>{","}</span></li>
+                : props.JSON.map((subarray, subkey) => (
                 json_verify(subarray)
                     ? <JSONcomponent key={subkey} JSON={subarray}/>
                     : <li className={'JSONChildren'} key={subkey}>{subarray}<span>{","}</span></li>
