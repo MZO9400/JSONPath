@@ -1,46 +1,36 @@
 import React from 'react';
 import './App.css';
 import JSONcomponent from './components/JSONcomponent';
+import {connect} from "react-redux";
 
-const JSON = {
-  "random": 73,
-  "random float": 82.985,
-  "bool": false,
-  "date": "1990-03-27",
-  "regEx": "helloooooooooooooooooooooooooooooooo world",
-  "enum": "generator",
-  "firstname": "Jerry",
-  "lastname": "Brodench",
-  "city": "Moscow",
-  "country": "Korea, Democratic People\"S Republic of",
-  "countryCode": "TF",
-  "email uses current data": "Jerry.Brodench@gmail.com",
-  "email from expression": "Jerry.Brodench@yopmail.com",
-  "array": [
-    "Olwen",
-    "Jenilee",
-    "Elyssa",
-    "Malina",
-    "Jolyn"
-  ],
-  "array of objects": [
-    {
-      "index": 0,
-      "index start at 5": 5
-    },
-    {
-      "index": 1,
-      "index start at 5": 6
-    },
-    {
-      "index": 2,
-      "index start at 5": 7
-    }
-  ]
+const App = (props) => {
+  let data = null;
+  try {
+    data = JSON.parse(props.JSON)
+  } catch(X) {
+    data = null
+  }
+  return (
+      <div>
+        <JSONcomponent JSON={data || {error:"Malformed JSON"}} isFolded={false}/>
+        <div>
+          <textarea onChange={val => props.putJSON(val.target.value)} value={props.JSON}/>
+          <textarea onChange={val => props.putParser(val.target.value)} value={props.parser}/>
+        </div>
+      </div>
+      );
 }
 
-function App() {
-  return <JSONcomponent JSON={JSON}/>;
+const mapState = state => {
+  return {
+    JSON: state.JSON
+  }
+}
+const mapDispatch = dispatch => {
+  return {
+    putJSON: value => dispatch({type: "PUTJSON", value}),
+    putParser: value => dispatch({type: "PUTPARSER", value})
+  }
 }
 
-export default App;
+export default connect(mapState, mapDispatch)(App);
