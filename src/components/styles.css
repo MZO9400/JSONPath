@@ -31,3 +31,11 @@ ul, li {
 .folded * {
     display: inline;
 }
+.parent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.root {
+    padding: 1%;
+}
