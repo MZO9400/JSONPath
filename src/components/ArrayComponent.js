@@ -5,7 +5,6 @@ const json_verify = function(s){ try { return typeof s == 'object' } catch (e) {
 
 export default props => (
     <div className={'JSONChildren'}>
-        <span>{props.it}: </span>
         <span>{"["}</span>
         {props.JSON.map((subarray, subkey) => (
             json_verify(subarray)

@@ -10,7 +10,9 @@ const JSONcomponent = props => {
                 {Object.keys(props.JSON).map((it, key) => (
                     Array.isArray(props.JSON[it])
                         ?
-                        <ArrayComponent it={it} key={key} JSON={props.JSON[it]} />
+                        <div key={key}>
+                            <span>{it}: </span> <ArrayComponent it={it} JSON={props.JSON[it]} />
+                        </div>
                         : json_verify(props.JSON[it])
                         ? <ul key={key}><span>"{it}"</span>: <JSONcomponent JSON={props.JSON[it]} /><span>{","}</span></ul>
                         : <li key={key}><span>"{it}"</span>: {props.JSON[it]}<span>{","}</span></li>
