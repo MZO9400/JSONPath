@@ -24,3 +24,10 @@ ul, li {
     -ms-user-select: none;
     user-select: none;
 }
+
+.folded {
+    display: inline;
+}
+.folded * {
+    display: inline;
+}
