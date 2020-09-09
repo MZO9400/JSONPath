@@ -15,7 +15,7 @@ const JSONcomponent = props => {
                         </div>
                         : json_verify(props.JSON[it])
                         ? <ul key={key}><span>"{it}"</span>: <JSONcomponent JSON={props.JSON[it]} /><span>{","}</span></ul>
-                        : <li key={key}><span>"{it}"</span>: {props.JSON[it]}<span>{","}</span></li>
+                        : <li key={key}><span>"{it}"</span>: {props.JSON[it].toString()}<span>{","}</span></li>
                     ))}
             </div>
             <span>{"},"}</span>
