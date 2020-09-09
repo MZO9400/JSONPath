@@ -1,5 +1,6 @@
 import React from 'react';
 import './JSONcomponent.css'
+import ArrayComponent from "./ArrayComponent";
 const json_verify = function(s){ try { return typeof s == 'object' } catch (e) { return false; }};
 const JSONcomponent = props => {
     return (
@@ -9,16 +10,7 @@ const JSONcomponent = props => {
                 {Object.keys(props.JSON).map((it, key) => (
                     Array.isArray(props.JSON[it])
                         ?
-                        <div className={'JSONChildren'} key={key}>
-                            <span>{it}: </span>
-                            <span>{"["}</span>
-                            {props.JSON[it].map((subarray, subkey) => (
-                                json_verify(subarray)
-                                    ? <JSONcomponent key={key + subkey} JSON={subarray} />
-                                    : <li key={key + subkey}>{subarray}<span>{","}</span></li>
-                            ))}
-                            <span>{"],"}</span>
-                        </div>
+                        <ArrayComponent it={it} key={key} JSON={props.JSON[it]} />
                         : json_verify(props.JSON[it])
                         ? <ul key={key}><span>"{it}"</span>: <JSONcomponent JSON={props.JSON[it]} /><span>{","}</span></ul>
                         : <li key={key}><span>"{it}"</span>: {props.JSON[it]}<span>{","}</span></li>
