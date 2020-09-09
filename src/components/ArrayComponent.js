@@ -1,6 +1,6 @@
 import React from "react";
 import JSONcomponent from "./JSONcomponent";
-import './JSONcomponent.css'
+import './styles.css'
 const json_verify = function(s){ try { return typeof s == 'object' } catch (e) { return false; }};
 
 export default props => (

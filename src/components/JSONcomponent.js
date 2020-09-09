@@ -1,5 +1,5 @@
 import React from 'react';
-import './JSONcomponent.css'
+import './styles.css'
 import ArrayComponent from "./ArrayComponent";
 const json_verify = function(s){ try { return typeof s == 'object' } catch (e) { return false; }};
 const JSONcomponent = props => {
