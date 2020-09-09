@@ -15,7 +15,7 @@ export default props => {
             {(isFolded ? props.JSON.slice(0, 1) : props.JSON).map((subarray, subkey) => (
                 json_verify(subarray)
                     ? <JSONcomponent key={subkey} JSON={subarray}/>
-                    : <li className={'JSONChildren'} key={subkey}>{subarray}<span>{","}</span></li>
+                    : <li className={'JSONChildren'} key={subkey}>{subarray}<span>{isFolded ? "..." : ","}</span></li>
             ))}
             <span>{"],"}</span>
         </div>

@@ -18,8 +18,8 @@ const JSONcomponent = props => {
                             <span>{it}: </span> <ArrayComponent it={it} JSON={props.JSON[it]} />
                         </div>
                         : json_verify(props.JSON[it])
-                        ? <ul key={key}><span>"{it}"</span>: <JSONcomponent JSON={props.JSON[it]} /><span>{","}</span></ul>
-                        : <li key={key}><span>"{it}"</span>: {props.JSON[it].toString()}<span>{","}</span></li>
+                        ? <ul key={key}><span>"{it}"</span>: <JSONcomponent JSON={props.JSON[it]} /><span>{isFolded ? "..." : ","}</span></ul>
+                        : <li key={key}><span>"{it}"</span>: {props.JSON[it].toString()}<span>{isFolded ? "..." : ","}</span></li>
                     ))}
             </div>
             <span>{"},"}</span>
