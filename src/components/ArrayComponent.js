@@ -9,7 +9,7 @@ export default props => (
         {props.JSON.map((subarray, subkey) => (
             json_verify(subarray)
                 ? <JSONcomponent key={subkey} JSON={subarray} />
-                : <li key={subkey}>{subarray}<span>{","}</span></li>
+                : <li className={'JSONChildren'} key={subkey}>{subarray}<span>{","}</span></li>
         ))}
         <span>{"],"}</span>
     </div>
