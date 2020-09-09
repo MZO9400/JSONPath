@@ -4,7 +4,6 @@ import ArrayComponent from "./ArrayComponent";
 const json_verify = function(s){ try { return typeof s == 'object' } catch (e) { return false; }};
 const JSONcomponent = props => {
     const [isFolded, toggleFold] = React.useState(false);
-    const key = Object.keys(props.JSON)[0];
     return (
         <div className={'JSON'}>
             <div>
