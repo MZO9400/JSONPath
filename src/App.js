@@ -2,17 +2,19 @@ import React from 'react';
 import './App.css';
 import JSONcomponent from './components/JSONcomponent';
 import {connect} from "react-redux";
+import ArrayComponent from "./components/ArrayComponent";
 
 const App = (props) => {
-  let data = null;
-  try {
-    data = JSON.parse(props.JSON)
-  } catch(X) {
-    data = null
-  }
+    let data;
+    try {
+        data = JSON.parse(props.JSON)
+    } catch (X) {
+        data = null;
+    }
+    const Component = Array.isArray(data) && data[0] ? ArrayComponent : JSONcomponent
   return (
       <div>
-        <JSONcomponent JSON={data || {error:"Malformed JSON"}} isFolded={false}/>
+        <Component JSON={data || [{error:"Malformed JSON"}]} isFolded={false}/>
         <div>
           <textarea onChange={val => props.putJSON(val.target.value)} value={props.JSON}/>
           <textarea onChange={val => props.putParser(val.target.value)} value={props.parser}/>
