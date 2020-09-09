@@ -2,18 +2,29 @@ import React from 'react';
 import './JSONcomponent.css'
 const json_verify = function(s){ try { return typeof s == 'object' } catch (e) { return false; }};
 const JSONcomponent = props => {
-    const length = Object.keys(props.JSON).length - 1;
     return (
         <div className={'JSON'}>
-            <p>{"{"}</p>
+            <span>{"{"}</span>
             <div className={'JSONChildren'}>
                 {Object.keys(props.JSON).map((it, key) => (
-                    json_verify(props.JSON[it])
-                        ? <p key={key}><span>{it}</span>: <JSONcomponent JSON={props.JSON[it]} /><span>{key >= length ? "" : ","}</span></p>
-                        : <p key={key}><span>{it}</span>: {props.JSON[it]}<span>{key >= length ? "" : ","}</span></p>
+                    Array.isArray(props.JSON[it])
+                        ?
+                        <div className={'JSONChildren'} key={key}>
+                            <span>{it}: </span>
+                            <span>{"["}</span>
+                            {props.JSON[it].map((subarray, subkey) => (
+                                json_verify(subarray)
+                                    ? <JSONcomponent key={key + subkey} JSON={subarray} />
+                                    : <li key={key + subkey}>{subarray}<span>{","}</span></li>
+                            ))}
+                            <span>{"],"}</span>
+                        </div>
+                        : json_verify(props.JSON[it])
+                        ? <ul key={key}><span>"{it}"</span>: <JSONcomponent JSON={props.JSON[it]} /><span>{","}</span></ul>
+                        : <li key={key}><span>"{it}"</span>: {props.JSON[it]}<span>{","}</span></li>
                     ))}
             </div>
-            <p>{"}"}</p>
+            <span>{"},"}</span>
         </div>
     );
 }
