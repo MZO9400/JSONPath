@@ -31,13 +31,13 @@ const App = (props) => {
   return (
       <div className={'root'}>
           <div className={'parent'}>
-            <Component JSON={data || [{error:"Malformed JSON"}]} isFolded={false}/>
-            <ArrayComponent JSON={parsed || [{error:"Malformed JSON"}]} isFolded={false} />
+              <textarea onChange={val => props.putJSON(val.target.value)} value={props.JSON} placeholder={'JSON data'}/>
+              <textarea onChange={val => props.putParser(val.target.value)} value={props.parser} placeholder={'JSONPath data'}/>
           </div>
-        <div className={'parent'}>
-          <textarea onChange={val => props.putJSON(val.target.value)} value={props.JSON} placeholder={'JSON data'}/>
-          <textarea onChange={val => props.putParser(val.target.value)} value={props.parser} placeholder={'JSONPath data'}/>
-        </div>
+          <div className={'parent'}>
+              {props.JSON && <Component JSON={data || [{error: "Malformed JSON"}]} isFolded={false}/>}
+              {props.parser && <ArrayComponent JSON={parsed || [{error: "Malformed JSONPath"}]} isFolded={false}/>}
+          </div>
       </div>
       );
 }
