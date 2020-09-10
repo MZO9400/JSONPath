@@ -15,7 +15,6 @@ ul, li {
     cursor: pointer;
     padding: 0 3px;
     margin-right: 5px;
-    border: solid 1px black;
 }
 .unselectable {
     -moz-user-select: none;
@@ -41,4 +40,15 @@ ul, li {
 
 .root {
     padding: 1%;
+}
+
+body {
+    background-color: #282c34;
+    color: azure;
+}
+textarea {
+    background-color: #282c34;
+    color: azure;
+    border-radius: 10px;
+    padding: 10px;
 }
