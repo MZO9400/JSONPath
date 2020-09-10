@@ -49,6 +49,7 @@ textarea {
 }
 .overflow {
     overflow-y: scroll;
+    vertical-align: baseline;
 }
 
 ::-webkit-scrollbar {
