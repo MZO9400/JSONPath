@@ -7,7 +7,7 @@ const JSONcomponent = props => {
     return (
         <div className={`JSON ${isFolded ? 'folded' : ''}`}>
             <div>
-                <span className={'parentContainer unselectable'} onClick={() => toggleFold(!isFolded)}>{isFolded ? "+" : "-"}</span>
+                <span className={'parentContainer unselectable'} onClick={() => toggleFold(!isFolded)}>{isFolded ? "►" : "▼"}</span>
                 <span>{"{"}</span>
             </div>
             <div className={'JSONChildren'}>

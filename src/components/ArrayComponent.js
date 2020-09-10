@@ -9,7 +9,7 @@ export default props => {
         <div className={`JSONChildren ${isFolded ? 'folded' : ''}`}>
             <div>
                 <span className={'parentContainer unselectable'}
-                      onClick={() => toggleFold(!isFolded)}>{isFolded ? "+" : "-"}</span>
+                      onClick={() => toggleFold(!isFolded)}>{isFolded ? "►" : "▼"}</span>
                 <span>{"["}</span>
             </div>
             {(isFolded ? props.JSON.slice(0, 1) : props.JSON).map((subarray, subkey) => (
