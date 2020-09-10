@@ -29,16 +29,20 @@ const App = (props) => {
         })
     } catch (e) {}
   return (
-      <div className={'root'}>
-          <div className={'parent'}>
-              <textarea onChange={val => props.putJSON(val.target.value)} value={props.JSON} placeholder={'JSON data'}/>
-              <textarea onChange={val => props.putParser(val.target.value)} value={props.parser} placeholder={'JSONPath data'}/>
-          </div>
-          <div className={'parent'}>
-              {props.JSON && <Component JSON={data || [{error: "Malformed JSON"}]} isFolded={false}/>}
-              {props.parser && <ArrayComponent JSON={parsed || [{error: "Malformed JSONPath"}]} isFolded={false}/>}
-          </div>
-      </div>
+      <table className={'root'}>
+          <thead>
+              <tr>
+                  <th><textarea onChange={val => props.putJSON(val.target.value)} value={props.JSON} placeholder={'JSON data'}/></th>
+                  <th><textarea onChange={val => props.putParser(val.target.value)} value={props.parser} placeholder={'JSONPath data'}/></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td className={'overflow'}>{props.JSON && <Component JSON={data || [{error: "Malformed JSON"}]} isFolded={false}/>}</td>
+                  <td className={'overflow'}>{props.parser && <ArrayComponent JSON={parsed || [{error: "Malformed JSONPath"}]} isFolded={false}/>}</td>
+              </tr>
+          </tbody>
+      </table>
       );
 }
 
